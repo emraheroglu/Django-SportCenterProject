@@ -1,0 +1,104 @@
+{% extends "homebase.html" %}
+{% load static %}
+{% block title %}Galeri - {{ setting.title }}{% endblock %}
+{% block keywords %}{{ setting.keywords }}{% endblock %}
+{% block description %}{{ setting.description }}{% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}'>
+{% endblock %}
+
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock %}
+
+
+{% block content %}
+    <!-- bradcam_area -->
+    <div class="bradcam_area">
+            <div class="single_bradcam  d-flex align-items-center bradcam_bg_3 overlay">
+                    <div class="container">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-xl-9">
+                                <div class="bradcam_text text-center">
+                                    <h3>GALERİ</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+    <!-- bradcam_area end -->
+
+    <!-- gallery_start -->
+    <div class="gallery_area">
+        <div class="single_gallery big_img">
+            <div class="hover_pop">
+                    <a class="popup-image" href="{% static 'img/gallery/1.png' %}">
+                        <i class="ti-plus"></i>
+                    </a>
+            </div>
+            <img src="{% static 'img/gallery/1.png' %}" alt="">
+        </div>
+        <div class="single_gallery big_img">
+                <div class="hover_pop">
+                        <a class="popup-image" href="{% static 'img/gallery/2.png' %}">
+                            <i class="ti-plus"></i>
+                        </a>
+                </div>
+            <img src="{% static 'img/gallery/2.png' %}" alt="">
+        </div>
+        <div class="single_gallery small_img">
+                <div class="hover_pop">
+                        <a class="popup-image" href="{% static 'img/gallery/3.png' %}">
+                            <i class="ti-plus"></i>
+                        </a>
+                </div>
+            <img src="{% static 'img/gallery/3.png' %}" alt="">
+        </div>
+        <div class="single_gallery small_img">
+                <div class="hover_pop">
+                        <a class="popup-image" href="{% static 'img/gallery/4.png' %}">
+                            <i class="ti-plus"></i>
+                        </a>
+                </div>
+                <img src="{% static 'img/gallery/4.png' %}" alt="">
+            </div>
+        <div class="single_gallery big_img">
+                <div class="hover_pop">
+                        <a class="popup-image" href="{% static 'img/gallery/5.png' %}">
+                            <i class="ti-plus"></i>
+                        </a>
+                </div>
+            <img src="{% static 'img/gallery/5.png' %}" alt="">
+        </div>
+        <div class="single_gallery big_img">
+                <div class="hover_pop">
+                        <a class="popup-image" href="{% static 'img/gallery/6.png' %}">
+                            <i class="ti-plus"></i>
+                        </a>
+                </div>
+            <img src="{% static 'img/gallery/6.png' %}" alt="">
+        </div>
+
+    </div>
+    <!-- gallery_area_end  -->
+    <a href="/galeri" class="view_pore boxed-btn3">View More</a>
+
+    <!-- big_offer_area start  -->
+    <div class="big_offer_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="offter_text text-center">
+                        <h3>A Big Offer for <br>
+                                This Summer</h3>
+                        <a href="#" class="boxed-btn3">Join Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- big_offer_area end  -->
+
+{% endblock %}
