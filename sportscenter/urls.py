@@ -31,6 +31,8 @@ urlpatterns = [
     path('singleblog/', views.singleblog, name='singleblog'),
     path('galeri/', views.galeri, name='galeri'),
     path('fiyatlar/', views.fiyatlar, name='fiyatlar'),
+    path('join/', views.join, name='join'),
+    path('login/', views.login, name='login'),
     path('product/', include('product.urls')),
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),

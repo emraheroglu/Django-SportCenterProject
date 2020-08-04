@@ -1,6 +1,6 @@
 {% extends "homebase.html" %}
 {% load static %}
-{% block title %}Referanslar - {{ setting.title }}{% endblock %}
+{% block title %}Hakkımızda - {{ setting.title }}{% endblock %}
 {% block keywords %}{{ setting.keywords }}{% endblock %}
 {% block description %}{{ setting.description }}{% endblock %}
 
@@ -14,54 +14,28 @@
 
 
 {% block content %}
-<!-- bradcam_area -->
-        <div class="bradcam_area">
-                <div class="single_bradcam  d-flex align-items-center bradcam_bg_2 overlay">
-                        <div class="container">
-                            <div class="row align-items-center justify-content-center">
-                                <div class="col-xl-9">
-                                    <div class="bradcam_text text-center">
-                                        <h3>REFERANS<br>SAYFASI</h3>
-                                    </div>
+       <div class="bradcam_area">
+            <div class="single_bradcam  d-flex align-items-center bradcam_bg_1 overlay">
+                    <div class="container">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-xl-9">
+                                <div class="bradcam_text text-center">
+                                    <h3>BİZE KATIL</h3>
+                                    <p>Üye olmak için aşağı kaydır.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-        </div>
-        <!-- bradcam_area end -->
+                </div>
+    </div>
     <div class="whole-wrap">
 		<div class="container box_1170">
 			<div class="section-top-border">
 				<div class="row">
 					<div class="col-md-3">
+                        <img src="{% static 'img/elements/d.jpg' %}" alt="" class="img-fluid">
 						<aside class="single_sidebar_widget tag_cloud_widget">
-                            <h4 class="widget_title">Referanslarımız</h4>
-                        <ul class="list">
-                        <li>
-                           <a href="https://www.fenerbahce.org/" target="_blank">Fenerbahçe</a>
-                        </li>
-                        <li>
-                           <a href="https://www.erogluholding.com/" target="_blank">Eroğlu Holding</a>
-                        </li>
-                        <li>
-                           <a href="https://www.temaistanbul.com/" target="_blank">Tema İstanbul</a>
-                        </li>
-                        <li>
-                           <a href="http://www.dumankaya.com/" target="_blank">Dumankaya</a>
-                        </li>
-                        <li>
-                           <a href="https://www.nef.com.tr/" target="_blank">NEF</a>
-                        </li>
-                        <li>
-                           <a href="https://www.vadistanbul.com/teras" target="_blank">Vadistanbul Teras</a>
-                        </li>
-                        <li>
-                           <a href="https://www.divanresidence.org/" target="_blank">Divan Residence</a>
-                        </li>
-                        </ul>
-                        </aside>
-                        <aside class="single_sidebar_widget tag_cloud_widget">
-                            <br><h4 class="widget_title">Diğer Sponsorluklarımız</h4>
+                            <br><h4 class="widget_title">Sponsorluklarımız</h4>
                         <ul class="list">
                             <li>
                                 <a href="http://www.esjim.com" target="_blank">ESJIM Sports</a>
@@ -91,7 +65,50 @@
                         </aside>
 					</div>
 					<div class="col-md-9 mt-sm-20">
-						<p>{{ setting.references|safe }}</p>
+						<p><center><form class="form-horizontal">
+		<h3>Üyelik</h3>
+		<div class="control-group">
+		<div class="controls">
+		</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="inputFname">Adınız <sup>*</sup></label>
+			<div class="controls">
+			  <input type="text" id="inputFname" placeholder="First Name">
+			</div>
+		 </div>
+		 <div class="control-group">
+			<label class="control-label" for="inputLname">Soyadınız<sup>*</sup></label>
+			<div class="controls">
+			  <input type="text" id="inputLname" placeholder="Last Name">
+			</div>
+		 </div>
+		<div class="control-group">
+		<label class="control-label" for="inputEmail">Email <sup>*</sup></label>
+		<div class="controls">
+		  <input type="text" placeholder="Email">
+		</div>
+	  </div>
+		<div class="control-group">
+		<label class="control-label">Şifre <sup>*</sup></label>
+		<div class="controls">
+		  <input type="password" placeholder="Password">
+		</div>
+	  </div>
+                        <div class="control-group">
+		<label class="control-label">Doğum Tarihi <sup>*</sup></label>
+		<div class="controls">
+		  <input type="date" placeholder="Birthdate">
+		</div>
+	  </div>
+	<div class="control-group">
+		<div class="controls">
+		 <br><input type="submit" name="submitAccount" value="Register" class="exclusive shopBtn">
+		</div>
+	</div>
+	</form></center>
+
+                        </p>
 					</div>
 				</div>
 			</div>
