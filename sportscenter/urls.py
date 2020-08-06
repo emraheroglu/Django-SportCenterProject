@@ -32,10 +32,12 @@ urlpatterns = [
     path('galeri/', views.galeri, name='galeri'),
     path('fiyatlar/', views.fiyatlar, name='fiyatlar'),
     path('join/', views.join, name='join'),
+    #path('branslar/', views.branslar, name='branslar'),
     path('login/', views.login, name='login'),
     path('product/', include('product.urls')),
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('category/<int:id>/<slug:slug>/', views.products, name='category_products'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

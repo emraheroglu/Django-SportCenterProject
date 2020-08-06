@@ -1,0 +1,65 @@
+{% extends "homebase.html" %}
+{% load static %}
+{% block title %}Üyelik Fiyatları - {{ categorydata.title }}{% endblock %}
+{% block keywords %}{{ categorydata.keywords }}{% endblock %}
+{% block description %}{{ categorydata.description }}{% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}'>
+{% endblock %}
+
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock %}
+
+
+{% block content %}
+    <!-- bradcam_area -->
+    <div class="bradcam_area">
+        <div class="single_bradcam  d-flex align-items-center bradcam_bg_2 overlay">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-xl-9">
+                        <div class="bradcam_text text-center">
+                            <h3>BRANŞLAR</h3><br>
+                            <h1 style="color: mediumaquamarine">{{ categorydata.title }}</h1>
+                            <h2 style="color: #cce5ff">{{ categorydata.title }} Ürünleri</h2>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="priscing_area">
+        <div class="container">
+            <div class="row">
+                {% for rs in products %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_prising text-center">
+                        <div class="prising_header">
+                            <h3>{{ rs.title }}</h3>
+                            <span>${{ rs.price }}</span>
+                            <a href="/product/{{ rs.id }}/{{rs.slug}}"></a>
+                        </div>
+                        <div class="pricing_body">
+                            <img img style="width:192px; height:192px;" src="{{ rs.image.url }}">
+                            <a href="/product" class="boxed-btn3">DETAYLAR</a>
+                        </div>
+
+                        <div class="pricing_btn">
+                            <a href="/join" class="boxed-btn3">BİZE KATIL</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    <script language="javascript" src="http://ir.sitekodlari.com/yukaricik1.js"></script>
+    </div>
+    <!-- bradcam_area end -->
+
+
+
+{% endblock %}

@@ -1,59 +1,91 @@
 {% load static %}
 <!-- header-start -->
-    <header>
-        <div class="header-area ">
-            <div id="sticky-header" class="main-header-area">
-                <div class="container-fluid ">
-                    <div class="header_bottom_border">
-                        <div class="row align-items-center">
-                            <div class="col-xl-3 col-lg-2">
-                                <div class="logo">
-                                    <a href="/index">
-                                        <img src="{% static 'img/logo.png' %}" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-7">
-                                <div class="main-menu  d-none d-lg-block">
-                                    <nav>
-                                        <ul id="navigation">
-                                            <li><a href="/index">ANASAYFA</a></li>
-                                            <li><a href="/fiyatlar">ÜYELİK FİYATLARI</a></li>
-                                            <li><a href="/galeri">GALERİ</a></li>
-                                            <li><a href="#">SAYFALAR <i class="ti-angle-down"></i></a>
-                                                <ul class="submenu">
-                                                    <li><a href="/iletisim">İLETİŞİM</a></li>
-                                                    <li><a href="/referanslar">REFERANSLARIMIZ</a></li>
-                                                    <li><a href="/hakkimizda">HAKKIMIZDA</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">BLOG <i class="ti-angle-down"></i></a>
-                                                <ul class="submenu">
-                                                    <li><a href="/blog">BLOG</a></li>
-                                                    <li><a href="/singleblog">SINGLE BLOG</a></li>
-                                                </ul>
-                                            </li>
-
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 d-none d-lg-block">
-                                <div class="Appointment">
-                                    <div class="book_btn d-none d-lg-block">
-                                        <a href="/login">GİRİŞ YAP</a>
-                                        <a href="/join">ÜYE OL</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="mobile_menu d-block d-lg-none"></div>
+<header>
+    <div class="header-area ">
+        <div id="sticky-header" class="main-header-area">
+            <div class="container-fluid ">
+                <div class="header_bottom_border">
+                    <div class="row align-items-center">
+                        <div class="col-xl-3 col-lg-2">
+                            <div class="logo">
+                                <a href="/index">
+                                    <img src="{% static 'img/logo.png' %}" alt="">
+                                </a>
                             </div>
                         </div>
-                    </div>
+                        <div class="col-xl-6 col-lg-7">
+                            <div class="main-menu  d-none d-lg-block">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a href="/index">ANASAYFA</a></li>
+                                        <li><a href="/fiyatlar">ÜCRETLENDİRME</a></li>
+                                        <li><a href="/galeri">GALERİ</a></li>
+                                        <li><a href="#">KATEGORİ<i class="ti-angle-down"></i></a>
+                                            {% load mptt_tags %}
 
+                                            <ul class="submenu">
+                                                {% recursetree category %}
+                                                    <li>
+                                                        <a href="/category/{{ node.id }}/{{ node.slug }}" {% if not node.is_leaf_node %}
+                                                           class="arrow" {% endif %}> {{ node.title }}</a>
+                                                        {% if not node.is_leaf_node %}
+                                                            <ul class="children">
+                                                                {{  children }}
+                                                            </ul>
+
+                                                        {% endif %}
+                                                    </li>
+                                                {% endrecursetree %}
+
+                                            </ul>
+                                            <!--
+                                            <ul class="submenu">
+                                                <li><a href="/branslar">TAKIM SPORLARI</a></li>
+                                                <li><a href="/branslar">FITNESS</a></li>
+                                                <li><a href="/branslar">YÜZME</a></li>
+                                                <li><a href="/branslar">JİMNASTİK</a></li>
+                                                <li><a href="/branslar">PİLATES</a></li>
+                                            </ul>
+                                             -->
+                                        </li>
+
+
+                                        <li><a href="#">SAYFALAR <i class="ti-angle-down"></i></a>
+                                            <ul class="submenu">
+                                                <li><a href="/iletisim">İLETİŞİM</a></li>
+                                                <li><a href="/referanslar">REFERANSLARIMIZ</a></li>
+                                                <li><a href="/hakkimizda">HAKKIMIZDA</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">BLOG <i class="ti-angle-down"></i></a>
+                                            <ul class="submenu">
+                                                <li><a href="/blog">BLOG</a></li>
+                                                <li><a href="/singleblog">SINGLE BLOG</a></li>
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                            <div class="Appointment">
+                                <div class="book_btn d-none d-lg-block">
+                                    <a href="/login">GİRİŞ YAP</a>
+                                    <a href="/join">ÜYE OL</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
-    </header>
+    </div>
+
+</header>
+
 <!-- header-end -->
