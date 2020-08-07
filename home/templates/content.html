@@ -21,229 +21,261 @@
         </div>
     </div>
 -->
-    <!--/ catagory_area  -->
+<!--/ catagory_area  -->
 
-    <!-- features_area_start  -->
-    <div class="features_area">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="section_title text-center mb-73">
-                        <h3>Our Features</h3>
-                        <p>There are many variations of passages of lorem Ipsum available, but the majority <br> have suffered alteration.</p>
+<!-- features_area_start  -->
+<div class="features_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="section_title text-center mb-73">
+                    <h3>ÖZELLİKLER</h3>
+                    <p>There are many variations of passages of lorem Ipsum available, but the majority <br> have suffered alteration.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="single_feature text-center mb-73">
+                    <div class="icon">
+                        <img src="{% static 'img/svg_icon/1.svg'%}" alt="">
+                    </div>
+                    <h4>Weightlifting</h4>
+                    <p>There are many variations of passages of lorem Ipsum available.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single_feature text-center">
+                    <div class="icon">
+                        <img src="{% static 'img/svg_icon/2.svg' %}" alt="">
+                    </div>
+                    <h4>Specific Muscles</h4>
+                    <p>There are many variations of passages of lorem Ipsum available.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single_feature text-center">
+                    <div class="icon">
+                        <img src="{% static 'img/svg_icon/3.svg'%}" alt="">
+                    </div>
+                    <h4>Flex Your Muscles</h4>
+                    <p>There are many variations of passages of lorem Ipsum available.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single_feature text-center">
+                    <div class="icon">
+                        <img src="{% static 'img/svg_icon/4.svg'%}" alt="">
+                    </div>
+                    <h4>Cardio Exercises</h4>
+                    <p>There are many variations of passages of lorem Ipsum available.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="priscing_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="section_title text-center mb-73">
+                    <h3>EN ÇOK TERCİH EDİLENLER</h3>
+                    <p>There are many variations of passages of lorem Ipsum available, but the majority <br> have suffered alteration.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for rs in randomurunler %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_prising text-center">
+                        <div class="prising_header">
+                            <h3>{{ rs.title }}</h3>
+                            <span>${{ rs.price }}</span>
+                        </div>
+                        <div class="pricing_body">
+                            <ul>
+                                <img img style="width:192px; height:192px;" src="{{ rs.image.url }}">
+                                <a href="/product/{{ rs.id }}/{{ rs.slug }}" class="boxed-btn3">DETAYLAR</a>
+                            </ul>
+                        </div>
+                        <div class="pricing_btn">
+                            <a href="/join" class="boxed-btn3">BİZE KATIL</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- features_area_end  -->
+
+<div class="offer_area offer_bg">
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="col-lg-6">
+                <div class="offer_text">
+                    <h4>YAZA FORMDA GİRMENİZ İÇİN<br>
+                        SİZİ BEKLİYORUZ!!</h4>
+                    <h3>İNDİRİM</h3>
+                    <p>3+ AYLIK ÜYELİKLERDE İNDİRİM FIRSATI SİZİ BEKLİYOR.</p>
+                    <a href="/join" class="boxed-btn3">BİZE KATIL</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- gallery_start -->
+<div class="gallery_area">
+    <div class="single_gallery big_img">
+        <div class="hover_pop">
+            <h3 style="color: #d01d33">GYM CENTER</h3>
+            <a class="popup-image" href="{% static 'img/gallery/1.png'%}">
+                <i class="ti-plus"></i>
+            </a>
+        </div>
+        <img src="{% static 'img/gallery/1.png'%}" alt="">
+    </div>
+    <div class="single_gallery big_img">
+        <div class="hover_pop">
+            <h3 style="color: #d01d33">GYM CENTER</h3>
+            <a class="popup-image" href="{% static 'img/gallery/2.png'%}">
+                <i class="ti-plus"></i>
+            </a>
+        </div>
+        <img src="{% static 'img/gallery/2.png'%}" alt="">
+    </div>
+    <div class="single_gallery small_img">
+        <div class="hover_pop">
+            <h3 style="color: #d01d33">GYM CENTER</h3>
+            <a class="popup-image" href="{% static 'img/gallery/3.png'%}">
+                <i class="ti-plus"></i>
+            </a>
+        </div>
+        <img src="{% static 'img/gallery/3.png'%}" alt="">
+    </div>
+    <div class="single_gallery small_img">
+        <div class="hover_pop">
+            <h3 style="color: #d01d33">GYM CENTER</h3>
+            <a class="popup-image" href="{% static 'img/gallery/4.png'%}">
+                <i class="ti-plus"></i>
+            </a>
+        </div>
+        <img src="{% static 'img/gallery/4.png'%}" alt="">
+    </div>
+    <div class="single_gallery big_img">
+        <div class="hover_pop">
+            <h3 style="color: #d01d33">GYM CENTER</h3>
+            <a class="popup-image" href="{% static 'img/gallery/5.png'%}">
+                <i class="ti-plus"></i>
+            </a>
+        </div>
+        <img src="{% static 'img/gallery/5.png'%}" alt="">
+    </div>
+    <div class="single_gallery big_img">
+        <div class="hover_pop">
+            <h3 style="color: #d01d33">GYM CENTER</h3>
+            <a class="popup-image" href="{% static 'img/gallery/6.png'%}">
+                <i class="ti-plus"></i>
+            </a>
+        </div>
+        <img src="{% static 'img/gallery/6.png'%}" alt="">
+    </div>
+
+</div>
+<!-- gallery_area_end  -->
+<a href="/galeri" class="view_pore boxed-btn3">View More</a>
+<!-- team_area_start  -->
+<div class="team_area team_bg_1 overlay2">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="section_title text-center mb-73">
+                    <h3>Our Trainers</h3>
+                    <p>There are many variations of passages of lorem Ipsum available, but the majority <br> have suffered alteration.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="single_team">
+                    <div class="team_thumb">
+                        <img src="{% static 'img/team/1.png'%}" alt="">
+                        <div class="team_hover">
+                            <div class="hover_inner text-center">
+                                <ul>
+                                    <li><a href="https://www.facebook.com/" target="_blank"> <i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="https://twitter.com/" target="_blank"> <i class="fa fa-twitter" target="_blank"></i> </a></li>
+                                    <li><a href="https://instagram.com/" target="_blank"> <i class="fa fa-instagram" target="_blank"></i> </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team_title text-center">
+                        <h3>Jessica Mino</h3>
+                        <p>Woman Trainer<br>+10 Years Experience</p>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="single_feature text-center mb-73">
-                        <div class="icon">
-                            <img src="{% static 'img/svg_icon/1.svg'%}" alt="">
+            <div class="col-lg-4 col-md-6">
+                <div class="single_team">
+                    <div class="team_thumb">
+                        <img src="{% static 'img/team/2.png'%}" alt="">
+                        <div class="team_hover">
+                            <div class="hover_inner text-center">
+                                <ul>
+                                    <li><a href="https://www.facebook.com/" target="_blank"> <i class="fa fa-facebook"></i> </a></li>
+                                    <li><a href="https://twitter.com/" target="_blank"> <i class="fa fa-twitter" target="_blank"></i> </a></li>
+                                    <li><a href="https://instagram.com/" target="_blank"> <i class="fa fa-instagram" target="_blank"></i> </a></li>
+                                </ul>
+                            </div>
                         </div>
-                        <h4>Weightlifting</h4>
-                        <p>There are many variations of passages of lorem Ipsum available.</p>
+                    </div>
+                    <div class="team_title text-center">
+                        <h3>Amit Khan</h3>
+                        <p>Men Trainer<br>2017, 2018, 2019 FitModel Champion</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single_feature text-center">
-                        <div class="icon">
-                            <img src="{% static 'img/svg_icon/2.svg' %}" alt="">
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single_team">
+                    <div class="team_thumb">
+                        <img src="{% static 'img/team/3.png'%}" alt="">
+                        <div class="team_hover">
+                            <div class="hover_inner text-center">
+                                <ul>
+                                    <li><a href="https://www.facebook.com/" target="_blank"> <i class="fa fa-facebook"></i> </a></li>
+                                    <li><a href="https://twitter.com/" target="_blank"> <i class="fa fa-twitter" target="_blank"></i> </a></li>
+                                    <li><a href="https://instagram.com/" target="_blank"> <i class="fa fa-instagram" target="_blank"></i> </a></li>
+                                </ul>
+                            </div>
                         </div>
-                        <h4>Specific Muscles</h4>
-                        <p>There are many variations of passages of lorem Ipsum available.</p>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single_feature text-center">
-                        <div class="icon">
-                            <img src="{% static 'img/svg_icon/3.svg'%}" alt="">
-                        </div>
-                        <h4>Flex Your Muscles</h4>
-                        <p>There are many variations of passages of lorem Ipsum available.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single_feature text-center">
-                        <div class="icon">
-                            <img src="{% static 'img/svg_icon/4.svg'%}" alt="">
-                        </div>
-                        <h4>Cardio Exercises</h4>
-                        <p>There are many variations of passages of lorem Ipsum available.</p>
+                    <div class="team_title text-center">
+                        <h3>Paulo Rolac</h3>
+                        <p>Men Trainer<br>Body Building</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- features_area_end  -->
+</div>
+<!-- team_area_end  -->
 
-    <div class="offer_area offer_bg">
-        <div class="container">
-            <div class="row justify-content-end">
-                <div class="col-lg-6">
-                    <div class="offer_text">
-                        <h4>YAZA FORMDA GİRMENİZ İÇİN<br>
-                                SİZİ BEKLİYORUZ!!</h4>
-                        <h3>İNDİRİM</h3>
-                        <p>3+ AYLIK ÜYELİKLERDE İNDİRİM FIRSATI SİZİ BEKLİYOR.</p>
-                        <a href="/join" class="boxed-btn3">BİZE KATIL</a>
-                    </div>
+<!-- big_offer_area start  -->
+<div class="big_offer_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="offter_text text-center">
+                    <h3>YAZA FORMDA GİRMENİZ İÇİN<br>
+                        SİZİ BEKLİYORUZ!!</h3>
+                    <a href="/join" class="boxed-btn3">BİZE KATIL</a>
                 </div>
             </div>
         </div>
     </div>
-
-
-    <!-- gallery_start -->
-    <div class="gallery_area">
-        <div class="single_gallery big_img">
-                <div class="hover_pop">
-                        <h3 style="color: #d01d33">GYM CENTER</h3>
-                        <a class="popup-image" href="{% static 'img/gallery/1.png'%}">
-                            <i class="ti-plus"></i>
-                        </a>
-                </div>
-            <img src="{% static 'img/gallery/1.png'%}" alt="">
-        </div>
-        <div class="single_gallery big_img">
-                <div class="hover_pop">
-                        <h3 style="color: #d01d33">GYM CENTER</h3>
-                        <a class="popup-image" href="{% static 'img/gallery/2.png'%}">
-                            <i class="ti-plus"></i>
-                        </a>
-                </div>
-            <img src="{% static 'img/gallery/2.png'%}" alt="">
-        </div>
-        <div class="single_gallery small_img">
-                <div class="hover_pop">
-                    <h3 style="color: #d01d33">GYM CENTER</h3>
-                        <a class="popup-image" href="{% static 'img/gallery/3.png'%}">
-                            <i class="ti-plus"></i>
-                        </a>
-                </div>
-            <img src="{% static 'img/gallery/3.png'%}" alt="">
-        </div>
-        <div class="single_gallery small_img">
-                <div class="hover_pop">
-                        <h3 style="color: #d01d33">GYM CENTER</h3>
-                        <a class="popup-image" href="{% static 'img/gallery/4.png'%}">
-                            <i class="ti-plus"></i>
-                        </a>
-                </div>
-                <img src="{% static 'img/gallery/4.png'%}" alt="">
-            </div>
-        <div class="single_gallery big_img">
-                <div class="hover_pop">
-                        <h3 style="color: #d01d33">GYM CENTER</h3>
-                        <a class="popup-image" href="{% static 'img/gallery/5.png'%}">
-                            <i class="ti-plus"></i>
-                        </a>
-                </div>
-            <img src="{% static 'img/gallery/5.png'%}" alt="">
-        </div>
-        <div class="single_gallery big_img">
-                <div class="hover_pop">
-                        <h3 style="color: #d01d33">GYM CENTER</h3>
-                        <a class="popup-image" href="{% static 'img/gallery/6.png'%}">
-                            <i class="ti-plus"></i>
-                        </a>
-                </div>
-            <img src="{% static 'img/gallery/6.png'%}" alt="">
-        </div>
-
-    </div>
-    <!-- gallery_area_end  -->
-    <a href="/galeri" class="view_pore boxed-btn3">View More</a>
-    <!-- team_area_start  -->
-    <div class="team_area team_bg_1 overlay2">
-            <div class="container">
-                    <div class="row">
-                            <div class="col-xl-12">
-                                <div class="section_title text-center mb-73">
-                                    <h3>Our Trainers</h3>
-                                    <p>There are many variations of passages of lorem Ipsum available, but the majority <br> have suffered alteration.</p>
-                                </div>
-                            </div>
-                        </div>
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single_team">
-                            <div class="team_thumb">
-                                <img src="{% static 'img/team/1.png'%}" alt="">
-                                <div class="team_hover">
-                                    <div class="hover_inner text-center">
-                                        <ul>
-                                            <li><a href="https://www.facebook.com/" target="_blank"> <i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="https://twitter.com/" target="_blank"> <i class="fa fa-twitter" target="_blank"></i> </a></li>
-                                            <li><a href="https://instagram.com/" target="_blank"> <i class="fa fa-instagram" target="_blank"></i> </a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="team_title text-center">
-                                <h3>Jessica Mino</h3>
-                                <p>Woman Trainer<br>+10 Years Experience</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single_team">
-                            <div class="team_thumb">
-                                <img src="{% static 'img/team/2.png'%}" alt="">
-                                <div class="team_hover">
-                                    <div class="hover_inner text-center">
-                                        <ul>
-                                            <li><a href="https://www.facebook.com/" target="_blank"> <i class="fa fa-facebook"></i> </a></li>
-                                            <li><a href="https://twitter.com/" target="_blank"> <i class="fa fa-twitter" target="_blank"></i> </a></li>
-                                            <li><a href="https://instagram.com/" target="_blank"> <i class="fa fa-instagram" target="_blank"></i> </a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="team_title text-center">
-                                <h3>Amit Khan</h3>
-                                <p>Men Trainer<br>2017, 2018, 2019 FitModel Champion</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single_team">
-                            <div class="team_thumb">
-                                <img src="{% static 'img/team/3.png'%}" alt="">
-                                <div class="team_hover">
-                                    <div class="hover_inner text-center">
-                                        <ul>
-                                            <li><a href="https://www.facebook.com/" target="_blank"> <i class="fa fa-facebook"></i> </a></li>
-                                            <li><a href="https://twitter.com/" target="_blank"> <i class="fa fa-twitter" target="_blank"></i> </a></li>
-                                            <li><a href="https://instagram.com/" target="_blank"> <i class="fa fa-instagram" target="_blank"></i> </a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="team_title text-center">
-                                <h3>Paulo Rolac</h3>
-                                <p>Men Trainer<br>Body Building</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <!-- team_area_end  -->
-
-    <!-- big_offer_area start  -->
-    <div class="big_offer_area">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="offter_text text-center">
-                        <h3>YAZA FORMDA GİRMENİZ İÇİN<br>
-                                SİZİ BEKLİYORUZ!!</h3>
-                        <a href="/join" class="boxed-btn3">BİZE KATIL</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <script language="javascript" src="http://ir.sitekodlari.com/yukaricik1.js"></script>
-    </div>
-    <!-- big_offer_area end  -->
+    <script language="javascript" src="http://ir.sitekodlari.com/yukaricik1.js"></script>
+</div>
+<!-- big_offer_area end  -->
 

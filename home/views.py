@@ -8,10 +8,14 @@ from product.models import Category, Product, Images
 
 def index(request):
     setting = Setting.objects.get(pk=1)
+    sliderData = Product.objects.all()
     category = Category.objects.all()
+    randomurunler = Product.objects.all().order_by('?')[:6]
     context = {'setting': setting,
                'page': 'home',
                'category': category,
+               'sliderData': sliderData,
+               'randomurunler': randomurunler,
                }
     return render(request, 'index.html', context)
 
@@ -125,9 +129,20 @@ def login(request):
 def products(request,id,slug):
     category = Category.objects.all()
     categorydata = Category.objects.get(pk=id)
-    products = Product.objects.filter(category_id=id)
-    context = { 'products': products,
+    sporturu= Product.objects.filter(category_id=id)
+    context = { 'sporturu': sporturu,
                 'category': category,
                 'categorydata': categorydata,
                }
     return render(request,'products.html',context)
+
+
+def sporturu(request, id, slug):
+    category = Category.objects.all()
+    categorydata = Category.objects.get(pk=id)
+    products = Product.objects.filter(category_id=id)
+    context = {'sporturu': products,
+               'category': category,
+               'categorydata': categorydata,
+               }
+    return render(request, 'sporturu.html', context)
