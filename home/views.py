@@ -3,12 +3,12 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 # Create your views here.
 from home.models import Setting, ContactFormMessage, ContactFormu
-from product.models import Category, Product, Images
-
+from product.models import Category, Product, Images, Comment
+from home.forms import SearchForm
 
 def index(request):
     setting = Setting.objects.get(pk=1)
-    sliderData = Product.objects.all()
+    sliderData = Product.objects.all().order_by('?')[:4]
     category = Category.objects.all()
     randomurunler = Product.objects.all().order_by('?')[:6]
     context = {'setting': setting,
@@ -127,22 +127,50 @@ def login(request):
 
 
 def products(request,id,slug):
+    setting = Setting.objects.get(pk=1)
     category = Category.objects.all()
     categorydata = Category.objects.get(pk=id)
-    sporturu= Product.objects.filter(category_id=id)
-    context = { 'sporturu': sporturu,
+    products= Product.objects.filter(category_id=id)
+    context = { 'products': products,
                 'category': category,
                 'categorydata': categorydata,
+                'setting': setting,
                }
     return render(request,'products.html',context)
 
 
-def sporturu(request, id, slug):
+def product_detail(request, id, slug):
+    setting = Setting.objects.get(pk=1)
     category = Category.objects.all()
-    categorydata = Category.objects.get(pk=id)
-    products = Product.objects.filter(category_id=id)
-    context = {'sporturu': products,
+    product = Product.objects.get(pk=id)
+    images = Images.objects.filter(product_id=id)
+    comments = Comment.objects.filter(product_id=id, status='True')
+    context = {'product': product,
                'category': category,
-               'categorydata': categorydata,
+               'images': images,
+               'comments': comments,
+               'setting': setting,
+
                }
-    return render(request, 'sporturu.html', context)
+    return render(request, 'product_detail.html', context)
+
+
+def product_search(request):
+    setting = Setting.objects.get(pk=1)
+    if request.method == 'POST':  # Check form post
+        form = SearchForm(request.POST)  # Get form data
+        if form.is_valid():
+            category = Category.objects.all()
+            query = form.cleaned_data['query']  # Get form data
+            #catid = form.cleaned_data['catid']  # Get form data
+            #if catid == 0:
+            products = Product.objects.filter(title__icontains=query)  # Select * from product where title like %query%
+            #else:
+            #products = Product.objects.filter(title__icontains=query, category_id=catid)
+            # return HttpResponse(products)
+            context = {'products': products,
+                       'category': category,
+                       'setting': setting,
+                       }
+            return render(request, 'products_search.html', context)
+    return HttpResponseRedirect('/')

@@ -11,13 +11,19 @@
                                 <a href="/index">
                                     <img src="{% static 'img/logo.png' %}" alt="">
                                 </a>
+                                <form action="/search/" method="post" class="input-append">
+                                    {% csrf_token %}
+                                    <input name="query" class="search-form" id="appendedPrependedInput" type="text"
+                                           placeholder="Search here.." style="width:175px; color: #d01d33"/>
+                                    <button class="btn btn-dark" type="submit">Search</button>
+                                </form>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-7">
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a href="/sporturu">ANASAYFA</a></li>
+                                        <li><a href="/index">ANASAYFA</a></li>
                                         <li><a href="/fiyatlar">ÜCRETLENDİRME</a></li>
                                         <li><a href="/galeri">GALERİ</a></li>
                                         <li><a href="#">KATEGORİ<i class="ti-angle-down"></i></a>
@@ -64,6 +70,7 @@
                                             </ul>
                                         </li>
 
+
                                     </ul>
                                 </nav>
                             </div>
@@ -74,6 +81,7 @@
                                     <a href="/login">GİRİŞ YAP</a>
                                     <a href="/join">ÜYE OL</a>
                                 </div>
+
                             </div>
                         </div>
                         <div class="col-12">

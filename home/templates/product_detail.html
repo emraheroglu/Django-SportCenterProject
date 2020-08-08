@@ -1,0 +1,191 @@
+{% extends "homebase.html" %}
+{% load static %}
+{% block title %} {{ product.title }}-{{ setting.title }}{% endblock %}
+{% block keywords %}{{ product.keywords }}{% endblock %}
+{% block description %}{{ product.description }}{% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}'>
+{% endblock %}
+
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock %}
+
+{% block content %}
+    <div class="bradcam_area">
+        <div class="single_bradcam  d-flex align-items-center bradcam_bg_2 overlay">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-xl-9">
+                        <div class="bradcam_text text-center">
+                            <h3>{{ product.title }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- features_area_start  -->
+    <div class="priscing_area">
+        <ul class="breadcrumb">
+            <li><a href="/index">Anasayfa</a> <span class="divider">/</span></li>
+            <li><a href="/category/{{ product.category_id }}/{{ product.category.slug }}">{{ product.category }}</a> <span class="divider">/</span></li>
+            <li class="active">{{ product.title }}</li>
+        </ul>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="section_title text-center mb-73">
+                        <h3>{{ product.title }}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-lg-6 col-md-6">
+                    <div class="single_prising text-center">
+                        <div class="prising_header">
+                            <h3>{{ product.title }}</h3>
+                            <span>${{ product.price }}</span>
+                            <a href="/product/{{ rs.id }}/{{rs.slug}}"></a>
+                            <div class="pricing_body">
+                                <a href="#">
+                                    <img style="width:192px; height:192px;" src="{{ product.image.url }}" alt="" >
+                                </a>
+                            </div>
+                            {% for rs in images %}
+                                <div class="pricing_body">
+                                    <a href="#">
+                                        <img style="width:160px; height:160px;" src="{{ rs.image.url }}" alt="" >
+                                    </a>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 offset-lg-1">
+                    <div class="span4">
+                        <div class="well">
+                            <h3 style="color: #e4606d">{{ product.title }}</h3>
+                            <div class="quote-wrapper">
+                                <p style="color: #cce5ff">
+                                    MCSE boot camps have its supporters and its detractors. Some people do not understand why you
+                                    should have to spend money on boot camp when you can get the MCSE study materials yourself at
+                                    a fraction of the camp price. However, who has the willpower to actually sit through a
+                                    self-imposed MCSE training.<BR>
+                                    <a href="/join" style="color: #9df39f">Üye olmak için tıkla.</a>
+                                </p><br>
+                                <font style="color: #9df39f"> Açıklama: </font><font style="color: #e4606d">{{ product.description |safe }}</font><br>
+                                <font style="color: #9df39f"> Kontenjan: </font><font style="color: #e4606d">{{ product.amount | safe }} Kişiliktir. <input class="input" type="number" min="0" max="{{ product.amount }}" value="1"/></input> </font><br>
+                                <font style="color: #9df39f"> Fiyat: </font><font style="color: #e4606d">${{ product.price | safe }}</font><br><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="whole-wrap">
+                <div class="container box_1170">
+                    <div class="section-top-border">
+                        <h3 style="color: #e4606d">{{ product.title }}</h3>
+                        <div class="row">
+                            <div class="col-md-9 mt-sm-20">
+                                <p style="color: #cce5ff">
+                                    MCSE boot camps have its supporters and its detractors. Some people do not understand why you
+                                    should have to spend money on boot camp when you can get the MCSE study materials yourself at
+                                    a fraction of the camp price. However, who has the willpower to actually sit through a
+                                    self-imposed MCSE training.<br>{{ product.title | safe }} ile ilgili açıklama bir alt satırdadır: <br>{{ product.detail | safe }}
+                                    <section class="blog_area single-post-area section-padding">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-lg-8 posts-list">
+                                                    <div class="comment-form">
+                                                        <h3 style="color: #e4606d;">Yorumlarınız Bizim İçin Değerli</h3><br>
+                                                        <h4 style="color: #9df39f;">Lütfen deneyimleriniz ile ilgili yorum yapın.</h4>
+                                                        <form class="form-contact comment_form" action="/product/addcomment/{{ product.id }}" method="post" id="commentForm">
+                                                            {% csrf_token %}
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <font color="#f5deb3">Your Review:</font>
+                                                                    <div class="form-group" style="background: floralwhite">
+                                                                        <textarea class="form-control w-100" name="comment" id="id_comment" cols="30" rows="9"
+                                                                                  placeholder="Your Review" style="color: #0c5460"></textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <font color="#f5deb3">Comment:</font>
+                                                                    <div class="form-group" style="background: floralwhite">
+                                                                        <input class="form-control" name="subject" id="id_subject" type="text" placeholder="Your Comment"style="color: #0c5460">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12">
+                                                                    <div >
+                                                                        <font style="color: #9df39f">Lütfen 5 Üzerinden Puan Veriniz.</font>
+                                                                        <div style="color: #cce5ff; font-size: 30px" >
+                                                                            5:<input type="radio" style="width: 20px; height: 20px" id="star1" name="rate" value="1" />&nbsp;&nbsp;
+                                                                            4:<input type="radio" style="width: 20px; height: 20px" id="star2" name="rate" value="2" />&nbsp;&nbsp;
+                                                                            3:<input type="radio" style="width: 20px; height: 20px" id="star3" name="rate" value="3" />&nbsp;&nbsp;
+                                                                            2:<input type="radio" style="width: 20px; height: 20px" id="star4" name="rate" value="4" />&nbsp;&nbsp;
+                                                                            1:<input type="radio" style="width: 20px; height: 20px" id="star5" name="rate" value="5" />&nbsp;&nbsp;
+                                                                        </div>
+                                                                        <br>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                {% if user.id is not None %}
+                                                                    <button type="submit" class="button button-contactForm btn_1 boxed-btn">Send Message</button>
+                                                                {% else  %}
+                                                                    <font style="color: #e4606d">Yorum eklemek için <a href="/login">giriş</a> yapınız.</font>
+                                                                {% endif %}
+                                                            </div>
+                                                            <div class="form-group">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="comments-area">
+                <h4 style="color: #cce5ff;">Üyelerimizin Yorumları</h4>
+                {% for rs in comments %}
+                    <div class="comment-list">
+                        <table border="1">
+                            <div class="single-comment justify-content-between d-flex">
+                                <div class="user justify-content-between d-flex">
+                                    <div class="desc">
+                                        <p class="comment">
+                                            <b>{{ rs.subject }}</b><br>
+                                            {{ rs.comment }}
+                                        </p>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="d-flex align-items-center">
+                                                <h5 style="color: #cce5ff;">
+                                                    {{ rs.user.first_name }}
+                                                </h5>
+                                                <p class="date">{{ rs.created_at }} , {{ rs.rate }} Yıldız</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </table>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

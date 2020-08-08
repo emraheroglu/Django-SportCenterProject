@@ -1,63 +1,26 @@
 {% load static %}
 <!-- slider_area_start -->
-    <div class="slider_area">
-        <div class="slider_active owl-carousel">
-            <div class="single_slider  d-flex align-items-center slider_bg_1 overlay">
-                <div class="container">
-                    <div class="row align-items-center justify-content-center">
-                        <div class="col-xl-12">
-                            <div class="slider_text text-center">
-                                <span>Build Up Your</span>
-                                <h3>Body Shape</h3>
-                                <p>Build Your Body and Fitness with Professional Touch</p>
-                                <a href="/join" class="boxed-btn3">BİZE KATIL</a>
+<div class="slider_area">
+    <div class="slider_active owl-carousel">
+        {% for rs in sliderData %}
+                <div class="single_slider  d-flex align-items-center overlay">
+                <!-- (slider_bg_1 || slider_bg_2) -->
+                    <div class="container">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-xl-12">
+                                <div class="slider_text text-center">
+                                    <div class="blog_item_img">
+                                        <center><img style="width:192px; height:192px;" src="{{ rs.image.url }}" alt="" ></center>
+                                    </div>
+                                    <h3 style="color: #0c5460">{{ rs.title }}</h3>
+                                    <p style="color: #0c5460">Daha önce hiç sahip olmadığın bir şeye sahip olmak istiyorsan, daha önce hiç yapmadığın bir şey yapmalısın.</p>
+                                    <a href="/product/{{ rs.id }}/{{ rs.slug }}" class="boxed-btn3">{{ rs.title }} Sayfası</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="single_slider  d-flex align-items-center slider_bg_2 overlay">
-                <div class="container">
-                    <div class="row align-items-center justify-content-center">
-                        <div class="col-xl-12">
-                            <div class="slider_text text-center">
-                                <span>Build Up Your</span>
-                                <h3>Strength</h3>
-                                <p>Build Your Body and Fitness with Professional Touch</p>
-                                <a href="/join" class="boxed-btn3">BİZE KATIL</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single_slider  d-flex align-items-center slider_bg_1 overlay">
-                <div class="container">
-                    <div class="row align-items-center justify-content-center">
-                        <div class="col-xl-12">
-                            <div class="slider_text text-center">
-                                <span>Build Up Your</span>
-                                <h3>Motivation</h3>
-                                <p>Build Your Body and Fitness with Professional Touch</p>
-                                <a href="/join" class="boxed-btn3">BİZE KATIL</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single_slider  d-flex align-items-center slider_bg_2 overlay">
-                <div class="container">
-                    <div class="row align-items-center justify-content-center">
-                        <div class="col-xl-12">
-                            <div class="slider_text text-center">
-                                <span>Build Up Your</span>
-                                <h3>Losing Weight</h3>
-                                <p>Build Your Body and Fitness with Professional Touch</p>
-                                <a href="/join" class="boxed-btn3">BİZE KATIL</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            {% endfor %}
     </div>
-    <!-- slider_area_end -->
+</div>
+<!-- slider_area_end -->
