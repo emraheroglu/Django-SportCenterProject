@@ -31,14 +31,18 @@ urlpatterns = [
     path('singleblog/', views.singleblog, name='singleblog'),
     path('galeri/', views.galeri, name='galeri'),
     path('fiyatlar/', views.fiyatlar, name='fiyatlar'),
-    path('join/', views.join, name='join'),
-    path('login/', views.login, name='login'),
+    path('join/', views.join_view, name='join_view'),
+    path('login/', views.login_view, name='login_view'),
     path('product/', include('product.urls')),
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('category/<int:id>/<slug:slug>/', views.products, name='category_products'),
     path('product/<int:id>/<slug:slug>/', views.product_detail, name='product_detail'),
     path('search/',views.product_search, name='product_search'),
+    path('search_auto/', views.product_search_auto, name="product_search_auto"),
+    path('logout/', views.logout_view, name='logout_view'),
+
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

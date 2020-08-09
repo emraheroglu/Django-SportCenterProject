@@ -19,7 +19,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['title', 'category', 'price', 'amount', 'image_tag', 'status']
+    list_display = ['title', 'category', 'price', 'amount', 'image_tag', 'status',]
     list_filter = ['category','status']
     inlines = [ProductImageInline]
     readonly_fields = ('image_tag',)

@@ -28,6 +28,6 @@ def addcomment(request, id):
             data.save()  # veritabanına kaydet
             messages.success(request, "Yorumunuz başarı ile gönderilmiştir. Teşekkür Ederiz")
             return HttpResponseRedirect(url)
-            # return HttpResponse("Kaydedildi")
+            #return HttpResponse("Kaydedildi")
     messages.warning(request, "Yorumunuz kaydedilmedi. Lütfen kontrol ediniz")
     return HttpResponseRedirect(url)

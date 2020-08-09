@@ -1,5 +1,22 @@
 {% load static %}
+{% load mptt_tags %}
 <!-- header-start -->
+<script>
+    $(function () {
+        $("#query").autocomplete({
+            source: "/search_auto/",
+            select: function (event, ui) { //item selected
+                AutoCompleteSelectHandler(event, ui)
+            },
+            minLength: 2,
+        });
+    });
+
+    function AutoCompleteSelectHandler(event, ui) {
+        var selectedObj = ui.item;
+    }
+</script>
+
 <header>
     <div class="header-area ">
         <div id="sticky-header" class="main-header-area">
@@ -8,14 +25,28 @@
                     <div class="row align-items-center">
                         <div class="col-xl-3 col-lg-2">
                             <div class="logo">
-                                <a href="/index">
+                                <a href="/">
                                     <img src="{% static 'img/logo.png' %}" alt="">
                                 </a>
+
                                 <form action="/search/" method="post" class="input-append">
                                     {% csrf_token %}
-                                    <input name="query" class="search-form" id="appendedPrependedInput" type="text"
-                                           placeholder="Search here.." style="width:175px; color: #d01d33"/>
+                                    <input id="query" name="query" type="text" class="span2" placeholder="Search here..">
                                     <button class="btn btn-dark" type="submit">Search</button>
+                                    <select name="catid" class="search-query" style="width: 250px;">
+                                        <option value="0">All Categories</option>
+                                        {% recursetree category %}
+                                            {% if node.is_leaf_node %}
+                                                <option value="{{ node.id }}">{{ node.title }}</option>  <!--alt menü yoksa -->
+                                            {% endif %}
+                                            {% if not node.is_leaf_node %}
+                                                <optgroup label="{{ node.title }}">
+                                                    {{ children }}                      <!--alt menü varsa -->
+                                                </optgroup>
+                                            {% endif %}
+                                        {% endrecursetree %}
+                                    </select>
+
                                 </form>
                             </div>
                         </div>
@@ -23,12 +54,10 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a href="/index">ANASAYFA</a></li>
+                                        <li><a href="/">ANASAYFA</a></li>
                                         <li><a href="/fiyatlar">ÜCRETLENDİRME</a></li>
                                         <li><a href="/galeri">GALERİ</a></li>
                                         <li><a href="#">KATEGORİ<i class="ti-angle-down"></i></a>
-                                            {% load mptt_tags %}
-
                                             <ul class="submenu">
                                                 {% recursetree category %}
                                                     <li>
@@ -61,20 +90,30 @@
                                                 <li><a href="/iletisim">İLETİŞİM</a></li>
                                                 <li><a href="/referanslar">REFERANSLARIMIZ</a></li>
                                                 <li><a href="/hakkimizda">HAKKIMIZDA</a></li>
+                                                <li><a href="/">SSS</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="#">BLOG <i class="ti-angle-down"></i></a>
-                                            <ul class="submenu">
-                                                <li><a href="/blog">BLOG</a></li>
-                                                <li><a href="/singleblog">SINGLE BLOG</a></li>
+                                        <li>
+                                            {% if user.id is not None %}
+                                                <a href="#">{{ user.first_name }} {{ user.last_name }}<i class="ti-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                <li><a href="/">BİLGİLERİM</a></li>
+                                                <li><a href="/">ÜYELİK SATIN AL</a></li>
+                                                <li><a href="/">BANA UYGUN TEKLİFLER</a></li>
+                                                <li><a href="/">PAKETLERİM</a></li>
+                                                <li><a href="/">YAPTIĞIM YORUMLAR</a></li>
+                                                <li><a href="/logout">ÇIKIŞ</a></li>
+                                            {% else %}
+                                                <a href="/login">GİRİŞ YAP</a>
+                                                <a href="/join">ÜYE OL</a>
+                                            {% endif %}
                                             </ul>
                                         </li>
-
-
                                     </ul>
                                 </nav>
                             </div>
                         </div>
+                    <!--
                         <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                             <div class="Appointment">
                                 <div class="book_btn d-none d-lg-block">
@@ -87,6 +126,7 @@
                         <div class="col-12">
                             <div class="mobile_menu d-block d-lg-none"></div>
                         </div>
+                     -->
                     </div>
                 </div>
 

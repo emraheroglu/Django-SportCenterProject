@@ -16,17 +16,17 @@
 {% block content %}
     <!-- bradcam_area -->
     <div class="bradcam_area">
-            <div class="single_bradcam  d-flex align-items-center bradcam_bg_3 overlay">
-                    <div class="container">
-                        <div class="row align-items-center justify-content-center">
-                            <div class="col-xl-9">
-                                <div class="bradcam_text text-center">
-                                    <h3>GALERİ</h3>
-                                </div>
-                            </div>
+        <div class="single_bradcam  d-flex align-items-center bradcam_bg_3 overlay">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-xl-9">
+                        <div class="bradcam_text text-center">
+                            <h3>GALERİ</h3>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
     </div>
     <!-- bradcam_area end -->
 
@@ -34,72 +34,98 @@
     <div class="gallery_area">
         <div class="single_gallery big_img">
             <div class="hover_pop">
-                    <a class="popup-image" href="{% static 'img/gallery/1.png' %}">
-                        <i class="ti-plus"></i>
-                    </a>
+                <a class="popup-image" href="{% static 'img/gallery/1.png' %}">
+                    <i class="ti-plus"></i>
+                </a>
             </div>
             <img src="{% static 'img/gallery/1.png' %}" alt="">
         </div>
         <div class="single_gallery big_img">
-                <div class="hover_pop">
-                        <a class="popup-image" href="{% static 'img/gallery/2.png' %}">
-                            <i class="ti-plus"></i>
-                        </a>
-                </div>
+            <div class="hover_pop">
+                <a class="popup-image" href="{% static 'img/gallery/2.png' %}">
+                    <i class="ti-plus"></i>
+                </a>
+            </div>
             <img src="{% static 'img/gallery/2.png' %}" alt="">
         </div>
         <div class="single_gallery small_img">
-                <div class="hover_pop">
-                        <a class="popup-image" href="{% static 'img/gallery/3.png' %}">
-                            <i class="ti-plus"></i>
-                        </a>
-                </div>
+            <div class="hover_pop">
+                <a class="popup-image" href="{% static 'img/gallery/3.png' %}">
+                    <i class="ti-plus"></i>
+                </a>
+            </div>
             <img src="{% static 'img/gallery/3.png' %}" alt="">
         </div>
         <div class="single_gallery small_img">
-                <div class="hover_pop">
-                        <a class="popup-image" href="{% static 'img/gallery/4.png' %}">
-                            <i class="ti-plus"></i>
-                        </a>
-                </div>
-                <img src="{% static 'img/gallery/4.png' %}" alt="">
+            <div class="hover_pop">
+                <a class="popup-image" href="{% static 'img/gallery/4.png' %}">
+                    <i class="ti-plus"></i>
+                </a>
             </div>
+            <img src="{% static 'img/gallery/4.png' %}" alt="">
+        </div>
         <div class="single_gallery big_img">
-                <div class="hover_pop">
-                        <a class="popup-image" href="{% static 'img/gallery/5.png' %}">
-                            <i class="ti-plus"></i>
-                        </a>
-                </div>
+            <div class="hover_pop">
+                <a class="popup-image" href="{% static 'img/gallery/5.png' %}">
+                    <i class="ti-plus"></i>
+                </a>
+            </div>
             <img src="{% static 'img/gallery/5.png' %}" alt="">
         </div>
         <div class="single_gallery big_img">
-                <div class="hover_pop">
-                        <a class="popup-image" href="{% static 'img/gallery/6.png' %}">
-                            <i class="ti-plus"></i>
-                        </a>
-                </div>
+            <div class="hover_pop">
+                <a class="popup-image" href="{% static 'img/gallery/6.png' %}">
+                    <i class="ti-plus"></i>
+                </a>
+            </div>
             <img src="{% static 'img/gallery/6.png' %}" alt="">
         </div>
 
     </div>
     <!-- gallery_area_end  -->
-    <a href="/galeri" class="view_pore boxed-btn3">View More</a>
-
-    <!-- big_offer_area start  -->
-    <div class="big_offer_area">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="offter_text text-center">
-                        <h3>A Big Offer for <br>
-                                This Summer</h3>
-                        <a href="/join" class="boxed-btn3">BİZE KATIL</a>
+    <a href="/index" class="view_pore boxed-btn3">ANASAYFA</a>
+    <div class="whole-wrap">
+        <div class="container box_1170">
+            <div class="section-top-border">
+                <h3>Image Gallery</h3>
+                <div class="row gallery-item">
+                    <div class="col-md-4">
+                        <a href="{% static 'img/elements/g1.jpg'%}" class="img-pop-up">
+                            <div class="single-gallery-image"><img src="{% static 'img/elements/g1.jpg'%}"></div>
+                        </a>
                     </div>
+                    <div class="col-md-4">
+                        <a href="{% static 'img/elements/g2.jpg'%}" class="img-pop-up">
+                            <div class="single-gallery-image"><img src="{% static 'img/elements/g2.jpg'%}"></div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="{% static 'img/elements/g3.jpg'%}" class="img-pop-up">
+                            <div class="single-gallery-image"><img src="{% static 'img/elements/g3.jpg'%}"></div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="{% static 'img/elements/g2.jpg'%}" class="img-pop-up">
+                            <div class="single-gallery-image"><img src="{% static 'img/elements/g2.jpg'%}"></div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="{% static 'img/elements/g1.jpg'%}" class="img-pop-up">
+                            <div class="single-gallery-image"><img src="{% static 'img/elements/g1.jpg'%}"></div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="{% static 'img/elements/g3.jpg'%}" class="img-pop-up">
+                            <div class="single-gallery-image"><img src="{% static 'img/elements/g3.jpg'%}"></div>
+                        </a>
+                    </div>
+
                 </div>
             </div>
-        </div>
-    <script language="javascript" src="http://ir.sitekodlari.com/yukaricik1.js"></script>
-    </div>
-    <!-- big_offer_area end  -->
 
+
+            <script language="javascript" src="http://ir.sitekodlari.com/yukaricik1.js"></script>
+        </div>
+
+    </div>
 {% endblock %}
