@@ -119,16 +119,6 @@ def join(request):
                }
     return render(request, 'join.html', context)
 
-"""
-def login(request):
-    category = Category.objects.all()
-    setting = Setting.objects.get(pk=1)
-    context = {'setting': setting,
-               'category': category,
-               'page': 'login'
-               }
-    return render(request, 'login.html', context)
-"""
 
 def products(request,id,slug):
     setting = Setting.objects.get(pk=1)
