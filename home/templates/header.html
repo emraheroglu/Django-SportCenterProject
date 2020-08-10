@@ -55,8 +55,11 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a href="/">ANASAYFA</a></li>
+                                    &ensp;
                                         <li><a href="/fiyatlar">ÜCRETLENDİRME</a></li>
+                                    &ensp;
                                         <li><a href="/galeri">GALERİ</a></li>
+                                    &ensp;
                                         <li><a href="#">KATEGORİ<i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                 {% recursetree category %}
@@ -64,8 +67,8 @@
                                                         <a href="/category/{{ node.id }}/{{ node.slug }}" {% if not node.is_leaf_node %}
                                                            class="arrow" {% endif %}> {{ node.title }}</a>
                                                         {% if not node.is_leaf_node %}
-                                                            <ul class="children">
-                                                                {{  children }}
+                                                            <ul class="children" >
+                                                                 {{  children }}
                                                             </ul>
 
                                                         {% endif %}
@@ -83,7 +86,7 @@
                                             </ul>
                                              -->
                                         </li>
-
+&ensp;
 
                                         <li><a href="#">SAYFALAR <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
@@ -93,16 +96,20 @@
                                                 <li><a href="/">SSS</a></li>
                                             </ul>
                                         </li>
+                                    &ensp;
                                         <li>
                                             {% if user.id is not None %}
                                                 <a href="#">{{ user.first_name }} {{ user.last_name }}<i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
-                                                <li><a href="/">BİLGİLERİM</a></li>
+                                                <center>
+                                                <li><a href="/user">BİLGİLERİM</a></li>
                                                 <li><a href="/">ÜYELİK SATIN AL</a></li>
                                                 <li><a href="/">BANA UYGUN TEKLİFLER</a></li>
                                                 <li><a href="/">PAKETLERİM</a></li>
                                                 <li><a href="/">YAPTIĞIM YORUMLAR</a></li>
                                                 <li><a href="/logout">ÇIKIŞ</a></li>
+                                                </center>
+
                                             {% else %}
                                                 <a href="/login">GİRİŞ YAP</a>
                                                 <a href="/join">ÜYE OL</a>
@@ -113,20 +120,20 @@
                                 </nav>
                             </div>
                         </div>
-                    <!--
-                        <div class="col-xl-3 col-lg-3 d-none d-lg-block">
-                            <div class="Appointment">
-                                <div class="book_btn d-none d-lg-block">
-                                    <a href="/login">GİRİŞ YAP</a>
-                                    <a href="/join">ÜYE OL</a>
-                                </div>
+                        <!--
+                            <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                                <div class="Appointment">
+                                    <div class="book_btn d-none d-lg-block">
+                                        <a href="/login">GİRİŞ YAP</a>
+                                        <a href="/join">ÜYE OL</a>
+                                    </div>
 
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="mobile_menu d-block d-lg-none"></div>
-                        </div>
-                     -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                         -->
                     </div>
                 </div>
 

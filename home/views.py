@@ -102,10 +102,12 @@ def galeri(request):
 
 def fiyatlar(request):
     category = Category.objects.all()
+    products=Product.objects.all()
     setting = Setting.objects.get(pk=1)
     context = {'setting': setting,
                'category': category,
-               'page': 'fiyatlar'
+               'page': 'fiyatlar',
+               'products': products,
                }
     return render(request, 'fiyatlar.html', context)
 
@@ -118,7 +120,6 @@ def join(request):
                'page': 'join'
                }
     return render(request, 'join.html', context)
-
 
 def products(request,id,slug):
     setting = Setting.objects.get(pk=1)
@@ -227,9 +228,9 @@ def join_view(request):
             current_user = request.user
             data = UserProfile()
             data.user_id = current_user.id
-            data.image = 'images/users/user.png'
+            data.image = 'images/users/manager.png'
             data.save()
-            messages.success(request, "Hoş geldiniz... Sitemize başarılı bir şekilde üye oldunuz.")
+            messages.success(request, "Hoş Geldin. Spor yapmak için harika bir gün değil mi?")
             return HttpResponseRedirect('/')
 
     form = JoinForm()

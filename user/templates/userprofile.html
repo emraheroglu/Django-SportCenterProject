@@ -1,0 +1,79 @@
+{% extends "homebase.html" %}
+{% load static %}
+{% block title %}Üye Profili - {{ setting.title }}{% endblock %}
+{% block keywords %}{{ setting.keywords }}{% endblock %}
+{% block description %}{{ setting.description }}{% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}'>
+{% endblock %}
+
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock %}
+
+
+{% block content %}
+    <!-- bradcam_area -->
+    <div class="bradcam_area">
+        <div class="single_bradcam  d-flex align-items-center bradcam_bg_2 overlay">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-xl-9">
+                        <div class="bradcam_text text-center">
+                            <h3>KULLANICI<br>PROFİLİ</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bradcam_area end -->
+    <div class="whole-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mb-5 mb-lg-0">
+                    <div class="blog_left_sidebar">
+                        <center>
+                            <br><h3 class="title">KULLANICI PROFİLİ</h3>
+                            <table border="2" bgcolor="#66cdaa">
+                                <tr>
+                                    <th width="200" ><center>Profil Resmi</center></th>
+                                    <th width="200"><center><img src=" {{ profile.image.url }}" width="128" height="128" border="1"></center></th>
+                                </tr>
+                                <tr>
+                                    <th width="200" height="50"><center>Adı Soyadı</center></th>
+                                    <th width="200"><center>{{ profile.user.first_name }} {{ profile.user.last_name }}</center></th>
+                                </tr>
+                                <tr>
+                                    <th width="200" height="50"><center>E-Mail Adresi</center></th>
+                                    <th width="200"><center>{{ profile.user.email }}</center></th>
+                                </tr>
+                                <tr>
+                                    <th width="200" height="50"><center>Telefon</center></th>
+                                    <th width="200"><center>{{ profile.phone }}</center></th>
+                                </tr>
+                                <tr>
+                                    <th width="200" height="50"><center>Adres</center></th>
+                                    <th width="200"><center>{{ profile.address }}</center></th>
+                                </tr>
+                                <tr>
+                                    <th width="200" height="50"><center>Şehir</center></th>
+                                    <th width="200"><center>{{ profile.city }}</center></th>
+                                </tr>
+                                <tr>
+                                    <th width="200" height="50"><center>Ülke</center></th>
+                                    <th width="200"><center>{{ profile.country }}</center></th>
+                                </tr>
+                            </table>
+                        </center>
+                    </div>
+                </div>
+                {% include "userpanel.html" %}
+            </div>
+
+        </div>
+        <script language="javascript" src="http://ir.sitekodlari.com/yukaricik1.js"></script>
+    </div>
+
+{% endblock %}

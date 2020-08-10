@@ -23,7 +23,11 @@ from home import views
 urlpatterns = [
     path('', include('home.urls')), #path de bir şey yazmadan home çalıştırır
     path('home/', include('home.urls')),
-    path('index/', views.index, name='index'),
+    path('product/', include('product.urls')),
+    path('admin/', admin.site.urls),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('user/', include('user.urls')),
+
     path('hakkimizda/', views.hakkimizda, name='hakkimizda'),
     path('iletisim/', views.iletisim, name='iletisim'),
     path('referanslar/', views.referanslar, name='referanslar'),
@@ -33,9 +37,6 @@ urlpatterns = [
     path('fiyatlar/', views.fiyatlar, name='fiyatlar'),
     path('join/', views.join_view, name='join_view'),
     path('login/', views.login_view, name='login_view'),
-    path('product/', include('product.urls')),
-    path('admin/', admin.site.urls),
-    path('ckeditor/', include('ckeditor_uploader.urls')),
     path('category/<int:id>/<slug:slug>/', views.products, name='category_products'),
     path('product/<int:id>/<slug:slug>/', views.product_detail, name='product_detail'),
     path('search/',views.product_search, name='product_search'),
