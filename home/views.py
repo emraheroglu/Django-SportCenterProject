@@ -73,27 +73,6 @@ def referanslar(request):
                }
     return render(request, 'referanslar.html', context)
 
-
-def blog(request):
-    category = Category.objects.all()
-    setting = Setting.objects.get(pk=1)
-    context = {'setting': setting,
-               'category': category,
-               'page': 'blog'
-               }
-    return render(request, 'blog.html', context)
-
-
-def singleblog(request):
-    category = Category.objects.all()
-    setting = Setting.objects.get(pk=1)
-    context = {'setting': setting,
-               'category': category,
-               'page': 'singleblog'
-               }
-    return render(request, 'singleblog.html', context)
-
-
 def galeri(request):
     category = Category.objects.all()
     setting = Setting.objects.get(pk=1)

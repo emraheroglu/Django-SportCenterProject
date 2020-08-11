@@ -1,0 +1,100 @@
+{% extends "homebase.html" %}
+{% load static %}
+{% block title %}Üyelik Fiyatları - {{ setting.title }}{% endblock %}
+{% block keywords %}{{ setting.keywords }}{% endblock %}
+{% block description %}{{ setting.description }}{% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}'>
+{% endblock %}
+
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock %}
+
+
+{% block content %}
+    <!-- bradcam_area -->
+    <div class="bradcam_area">
+        <div class="single_bradcam  d-flex align-items-center bradcam_bg_2 overlay">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-xl-9">
+                        <div class="bradcam_text text-center">
+                            <h3>SİPARİŞ<BR>FORMU</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="whole-wrap">
+        <div class="container box_1170">
+            <div class="section-top-border">
+                <form action="" method="post">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="single-defination">
+                                <h3 class="mb-30">Üyelik Detayları</h3>
+                                {% csrf_token %}
+                                <label for="id_city" style="color: #d01d33">Şehir:</label><br>
+                                <select name="city" class="input" id="id_city">
+                                    <option value="{{ profile.city }}" selected>{{ profile.city }}</option>
+                                    <option value="İstanbul">İstanbul</option>
+                                    <option value="Ankara">Ankara</option>
+                                    <option value="İzmir">İzmir</option>
+                                    <option value="Bursa">Bursa</option>
+                                    <option value="Karabük">Karabük</option>
+                                </select>
+                                <br><br><label for="id_first_name" style="color: #d01d33">İsim:</label><br>
+                                <input type="text" name="first_name" value="{{ user.first_name }}" class="input" maxlength=" "><br>
+                                <label for="id_last_name" style="color: #d01d33">Soyisim:</label><br>
+                                <input type="text" name="last_name" value="{{ user.last_name }}" class="input" maxlength=" "><br>
+                                <label for="id_address" style="color: #d01d33">Adres:</label><br>
+                                <input type="text" name="address" value="{{ profile.address }}" class="input" maxlength=" "><br>
+                                <label for="id_phone" style="color: #d01d33">Telefon:</label><br>
+                                <input type="text" name="phone" value="{{ profile.phone }}" class="input" maxlength=" "><br>
+                                <label for="id_firt_name" style="color: #d01d33">Ülke:</label><br>
+                                <input type="text" name="country"class="input" id="id_country" value="{{ profile.country }}" maxlength=" "><br>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="single-defination">
+                                <div class="blog_left_sidebar">
+                                    <h3 class="mb-30">Ödeme Detayları</h3>
+                                    <label for="id_first_name" style="color: #d01d33">Toplam Ücret: </label><br>
+                                    <input type="text" name="total" class="input" readonly value="${{ total }}"><br>
+                                    <label for="id_first_name" style="color: #d01d33">Kart Sahibinin Adı</label><br>
+                                    <input type="text" name="holder" class="input" value=""><br>
+                                    <label for="id_first_name" style="color: #d01d33">Kredi Kartı Numarası</label><br>
+                                    <input type="text" name="number" class="input" value=""><br>
+                                    <label for="id_first_name" style="color: #d01d33">Son Kullanma Tarihi</label><br>
+                                    <input type="text" name="ecpdate" class="input" value="mm/yy"><br>
+                                    <label for="id_first_name" style="color: #d01d33">CVV</label><br>
+                                    <input type="text" name="secnumber" class="input" value=""><br>
+                                    <div class="controls">
+                                        <button type="submit" class="defaultBtn" style="color: #d01d33; background: mediumaquamarine">Kaydı Tamamla</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+						<div class="single-defination">
+							<h4 class="mb-30">Teşekkürler! Sayın {{ user }}</h4>
+							<p>
+                                Şehrimizin önde gelen spor kompleksi olan EE|SporCenter'ı tercih ettiğiniz
+                                için çok teşekkür ederiz.<br>
+                                Spor merkezimiz haftanın 7 günü açıktır.
+                                Pazartesiden Cumartesiye : 08.00 - 22.00
+                                Pazar Günleri : 10.00 - 17. 00 saatleri arasında hizmetinizdeyiz.
+                            </p>
+						</div>
+					</div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

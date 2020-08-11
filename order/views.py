@@ -4,9 +4,12 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
-from home.models import Setting
-from order.models import ShopCartForm, ShopCart
-from product.models import Category
+from django.utils.crypto import get_random_string
+
+from home.models import Setting, UserProfile
+from order.models import ShopCartForm, ShopCart, OrderForm, Order, OrderProduct
+from product.models import Category, Product
+
 
 def index(request):
     #setting = Setting.objects.get(pk=1)
@@ -78,7 +81,6 @@ def shopcart(request):
              }
     return render(request,'shopcart_products.html',context)
 
-
 @login_required(login_url='/login') # Check login
 def deletefromcart(request,id):
     ShopCart.objects.filter(id=id).delete()
@@ -86,3 +88,72 @@ def deletefromcart(request,id):
     request.session['cart_items'] = ShopCart.objects.filter(user_id=current_user.id).count()  # listedekileri sayar
     messages.success(request, "Seçtiğiniz spor sepetten silinmiştir.")
     return HttpResponseRedirect("/shopcart")
+
+@login_required(login_url='/login')  # Check login
+def orderproduct(request):
+    setting = Setting.objects.get(pk=1)
+    category = Category.objects.all()
+    product = Product.objects.all()
+    current_user = request.user
+    shopcart=ShopCart.objects.filter(user_id=current_user.id)
+    total = 0
+    for rs in shopcart:
+        total+= rs.product.price * rs.quantity
+
+    if request.method == 'POST':  # if there is a post
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            #kredi kartı bilgilerini bankaya gönder onay gelirse dewamkee
+            #<*><*><*><*>#
+            data = Order()
+            data.first_name = form.cleaned_data['first_name']
+            data.last_name = form.cleaned_data['last_name']
+            data.address = form.cleaned_data['address']
+            data.city = form.cleaned_data['city']
+            data.phone = form.cleaned_data['phone']
+            data.user_id = current_user.id
+            data.total=total
+            data.ip = request.META.get('REMOTE_ADDR')
+            ordercode = get_random_string(8).upper() #random kod üretir
+            data.code = ordercode
+            data.save()
+
+            #move shopcart items to order products items
+            shopcart=ShopCart.objects.filter(user_id=current_user.id)
+            for rs in shopcart:
+                detail = OrderProduct()
+                detail.order_id     = data.id #order id
+                detail.product_id   = rs.product_id
+                detail.user_id      = current_user.id
+                detail.quantity     = rs.quantity
+                detail.price        = rs.product.price
+                detail.amount       = rs.amount
+                detail.save()
+                #***** reduce quantity of sold product from amount of product
+                product=Product.objects.get(id=rs.product_id)
+                product.amount -= rs.quantity
+                product.save()
+                #****+++---*****
+
+            ShopCart.objects.filter(user_id=current_user.id).delete() #Clear and Delete ShopCart
+            request.session['cart_items']=0
+            messages.success(request, "Üyeliğiniz başarıyla tamamlanmıştır. Sporla kalın! ")
+            return render(request, 'Order_Completed.html', {'ordercode': ordercode,
+                                                            'category': category,
+                                                            'setting': setting})
+
+        else:
+            messages.warning(request, form.errors)
+            return HttpResponseRedirect("/order/orderproduct/")
+
+    form = OrderForm()
+    profile = UserProfile.objects.get(user_id=current_user.id)
+    context = {'category': category,
+               'shopcart':shopcart,
+               'form': form,
+               'total': total,
+               'profile': profile,
+               'product': product,
+               'setting': setting,
+               }
+    return render(request, 'Order_Form.html', context)
