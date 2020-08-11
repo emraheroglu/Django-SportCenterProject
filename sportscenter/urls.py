@@ -19,11 +19,13 @@ from django.contrib import admin
 from django.urls import path, include
 
 from home import views
+from order import views as OrderViews
 
 urlpatterns = [
     path('', include('home.urls')), #path de bir şey yazmadan home çalıştırır
     path('home/', include('home.urls')),
     path('product/', include('product.urls')),
+    path('order/', include('order.urls')),
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('user/', include('user.urls')),
@@ -42,7 +44,7 @@ urlpatterns = [
     path('search/',views.product_search, name='product_search'),
     path('search_auto/', views.product_search_auto, name="product_search_auto"),
     path('logout/', views.logout_view, name='logout_view'),
-
+    path('shopcart/', OrderViews.shopcart, name='shopcart'),
 
 ]
 if settings.DEBUG:

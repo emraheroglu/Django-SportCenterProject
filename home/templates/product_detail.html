@@ -30,7 +30,7 @@
     <!-- features_area_start  -->
     <div class="priscing_area">
         <ul class="breadcrumb">
-            <li><a href="/index">Anasayfa</a> <span class="divider">/</span></li>
+            <li><a href="/">Anasayfa</a> <span class="divider">/</span></li>
             <li><a href="/category/{{ product.category_id }}/{{ product.category.slug }}">{{ product.category }}</a> <span class="divider">/</span></li>
             <li class="active">{{ product.title }}</li>
         </ul>
@@ -78,9 +78,19 @@
                                     self-imposed MCSE training.<BR>
                                     <a href="/join" style="color: #9df39f">Üye olmak için tıkla.</a>
                                 </p><br>
-                                <font style="color: #9df39f"> Açıklama: </font><font style="color: #e4606d">{{ product.description |safe }}</font><br>
-                                <font style="color: #9df39f"> Kontenjan: </font><font style="color: #e4606d">{{ product.amount | safe }} Kişiliktir. <input class="input" type="number" min="0" max="{{ product.amount }}" value="1"/></input> </font><br>
-                                <font style="color: #9df39f"> Fiyat: </font><font style="color: #e4606d">${{ product.price | safe }}</font><br><br>
+                                <form action="/order/addtocart/{{ product.id }}" method="post">
+                                    {% csrf_token %}
+                                    <font style="color: #9df39f"> Açıklama: </font><font style="color: #e4606d">{{ product.description |safe }}</font><br>
+                                    <font style="color: #9df39f"> Kontenjan: </font><font style="color: #e4606d">{{ product.amount | safe }} Kişiliktir. Maksimum 2 kişi için kayıt yapabilirsiniz.&ensp;<br>
+                                    <font style="color: #9df39f"> Adet: &ensp;</font><input name="quantity" class="input" type="number" min="0" max="2" value="1"/></font><br>
+                                    <font style="color: #9df39f"> Fiyat: </font><font style="color: #e4606d">${{ product.price | safe }}</font><br>
+                                    {% if user.id is not None %}
+                                        <button type="submit" class="btn block" style="background: mediumaquamarine">Ekle</button>
+                                    {% else %}
+                                        <font style="color: #9df39f">Bu programı satın almak için lütfen <a href="/login" style="color: #e4606d"> giriş</a> yapın.</font>
+                                    {% endif %}
+                                </form>
+
                             </div>
                         </div>
                     </div>
@@ -157,9 +167,7 @@
                                         <div class="comment-list">
                                             <div class="single-comment justify-content-between d-flex">
                                                 <div class="user justify-content-between d-flex">
-                                                    <div class="thumb">
-                                                        <img src="{% static 'img/comment/comment_3.png' %}" alt="">
-                                                    </div>
+
                                                     <div class="desc">
                                                         <p class="comment">
                                                             <b>{{ rs.subject }}</b><br>

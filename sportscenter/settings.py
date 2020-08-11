@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'order.apps.OrderConfig',
     'user.apps.UserConfig',
     'product.apps.ProductConfig',
     'home.apps.HomeConfig',
@@ -132,7 +133,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'uploads')
 SITE_ID = 1
 
 ####################################
-    ##  CKEDITOR CONFIGURATION ##
+##  CKEDITOR CONFIGURATION ##
 ####################################
 
 CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'

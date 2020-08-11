@@ -6,15 +6,19 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 # Create your views here.
 from home.models import Setting, ContactFormMessage, ContactFormu, UserProfile
+from order.models import ShopCart
 from product.models import Category, Product, Images, Comment
 from home.forms import SearchForm, JoinForm
 
 
 def index(request):
+    current_user = request.user  # Access User Session information
     setting = Setting.objects.get(pk=1)
     sliderData = Product.objects.all().order_by('?')[:4]
     category = Category.objects.all()
     randomurunler = Product.objects.all().order_by('?')[:6]
+    request.session['cart_items'] = ShopCart.objects.filter(user_id=current_user.id).count()  # listedekileri sayar
+
     context = {'setting': setting,
                'page': 'home',
                'category': category,
