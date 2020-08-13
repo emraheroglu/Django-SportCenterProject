@@ -1,0 +1,50 @@
+{% extends 'homebase.html' %}
+{% load static %}
+{% block title %}  {{ user.first_name }} Profile  Update{% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}'>
+{% endblock %}
+{% block sidebar %} {% include 'sidebar.html' %} {% endblock %}
+
+{% block content %}
+    <!-- bradcam_area -->
+    <div class="bradcam_area">
+        <div class="single_bradcam  d-flex align-items-center bradcam_bg_2 overlay">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-xl-9">
+                        <div class="bradcam_text text-center">
+                            <h3>PROFİL<br>GÜNCELLE</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bradcam_area end -->
+    <div class="whole-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mb-5 mb-lg-0">
+                    <div class="single-defination">
+                            <br><h3 class="title">KULLANICI PROFİLİ</h3>
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <fieldset class="form-group">
+                                    {{ user_form.as_p }}<br>
+                                    {{ profile_form.as_p }}
+                                </fieldset>
+                                <div class="controls">
+                                        <button type="submit" class="defaultBtn" style="color: #d01d33; background: mediumaquamarine">Güncelle!</button>
+                                </div>
+                            </form>
+                        <br>
+                    </div>
+                </div>
+                {% include "userpanel.html" %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

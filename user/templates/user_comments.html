@@ -1,0 +1,73 @@
+{% extends 'homebase.html' %}
+{% load static %}
+{% block title %}  {{ user.first_name }} Profile  Update{% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}'>
+{% endblock %}
+{% block sidebar %} {% include 'sidebar.html' %} {% endblock %}
+
+{% block content %}
+    <!-- bradcam_area -->
+    <div class="bradcam_area">
+        <div class="single_bradcam  d-flex align-items-center bradcam_bg_2 overlay">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-xl-9">
+                        <div class="bradcam_text text-center">
+                            <h3>YORUMLAR</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="whole-wrap">
+        <div class="container box_1170">
+            <div class="section-top-border">
+                <center>
+                    <h3 class="mb-30">Yaptığım Yorumlar</h3>
+                    {% for rs in comments %}
+                        <table border="2">
+                            <tr>
+                                <th width="200" style="background: #e4606d"><center>SPOR:</center></th>
+                                <th width="400" style="background: #cce5ff"><center>{{ rs.product.title }}</center></th>
+                            </tr>
+                            <tr>
+                                <th width="200" style="background: #e4606d"><center>PUAN:</center></th>
+                                <th width="400" style="background: #cce5ff"><center>{{ rs.rate }}</center></th>
+                            </tr>
+                            <tr>
+                                <th width="200" style="background: #e4606d"><center>KONU:</center></th>
+                                <th width="400" style="background: #cce5ff"><center>{{ rs.subject }}</center></th>
+                            </tr>
+                            <tr>
+                                <th width="200" style="background: #e4606d"><center>YORUM:</center></th>
+                                <th width="400" style="background: #cce5ff"><center>{{ rs.comment }}</center></th>
+                            </tr>
+                            <tr>
+                                <th width="200" style="background: #e4606d"><center>DURUM:</center></th>
+                                <th width="400" style="background: #cce5ff"><center>{{ rs.status }}</center></th>
+                            </tr>
+                            <tr>
+                                <th width="200" style="background: #e4606d"><center>TARİH:</center></th>
+                                <th width="400" style="background: #cce5ff"><center>{{ rs.created_at }}</center></th>
+                            </tr>
+                            <tr>
+                                <th width="200" style="background: #e4606d"><center>SİL:</center></th>
+                                <th width="400" style="background: #cce5ff"><center><a class="btn btn-primary" href="/user/deletecomment/{{ rs.id }}" onclick="return confirm('Yorumunuzu silmek istediğinizden emin misiniz?')">Silmek için tıkla.</a> </center></th>
+                            </tr>
+                            <tr>
+                                <th width="200" height="25" style="background: #0c5460"></th>
+                                <th width="400" height="25" style="background: #0c5460"></th>
+                            </tr>
+                        </table>
+                    {% endfor %}
+                </center>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

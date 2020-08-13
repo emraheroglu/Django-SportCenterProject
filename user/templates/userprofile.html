@@ -38,42 +38,43 @@
                             <br><h3 class="title">KULLANICI PROFİLİ</h3>
                             <table border="2" bgcolor="#66cdaa">
                                 <tr>
-                                    <th width="200" ><center>Profil Resmi</center></th>
-                                    <th width="200"><center><img src=" {{ profile.image.url }}" width="128" height="128" border="1"></center></th>
+                                    <th width="250" ><center>Profil Resmi</center></th>
+                                    <th width="250"><center><img src=" {{ profile.image.url }}" width="128" height="128" border="1"></center></th>
                                 </tr>
                                 <tr>
-                                    <th width="200" height="50"><center>Adı Soyadı</center></th>
-                                    <th width="200"><center>{{ profile.user.first_name }} {{ profile.user.last_name }}</center></th>
+                                    <th width="250" height="50"><center>Adı Soyadı</center></th>
+                                    <th width="250"><center>{{ profile.user.first_name }} {{ profile.user.last_name }}</center></th>
                                 </tr>
                                 <tr>
-                                    <th width="200" height="50"><center>E-Mail Adresi</center></th>
-                                    <th width="200"><center>{{ profile.user.email }}</center></th>
+                                    <th width="250" height="50"><center>E-Mail Adresi</center></th>
+                                    <th width="250"><center>{{ profile.user.email }}</center></th>
                                 </tr>
                                 <tr>
-                                    <th width="200" height="50"><center>Telefon</center></th>
-                                    <th width="200"><center>{{ profile.phone }}</center></th>
+                                    <th width="250" height="50"><center>Telefon</center></th>
+                                    <th width="250"><center>{{ profile.phone }}</center></th>
                                 </tr>
                                 <tr>
-                                    <th width="200" height="50"><center>Adres</center></th>
-                                    <th width="200"><center>{{ profile.address }}</center></th>
+                                    <th width="250" height="50"><center>Adres</center></th>
+                                    <th width="250"><center>{{ profile.address }}</center></th>
                                 </tr>
                                 <tr>
-                                    <th width="200" height="50"><center>Şehir</center></th>
-                                    <th width="200"><center>{{ profile.city }}</center></th>
+                                    <th width="250" height="50"><center>Şehir</center></th>
+                                    <th width="250"><center>{{ profile.city }}</center></th>
                                 </tr>
                                 <tr>
-                                    <th width="200" height="50"><center>Ülke</center></th>
-                                    <th width="200"><center>{{ profile.country }}</center></th>
+                                    <th width="250" height="50"><center>Ülke</center></th>
+                                    <th width="250"><center>{{ profile.country }}</center></th>
                                 </tr>
-                            </table>
+                                <tr bgcolor="#dc143c">
+                                    <th width="250" height="50"><center><a href="/user/update">Bilgileri Güncelle</a></center></th>
+                                    <th width="250"><center><a href="/user/password">Parola Değiştir</a></center></th>
+                                </tr>
+                            </table><br>
                         </center>
                     </div>
                 </div>
                 {% include "userpanel.html" %}
             </div>
-
         </div>
-        <script language="javascript" src="http://ir.sitekodlari.com/yukaricik1.js"></script>
     </div>
-
 {% endblock %}

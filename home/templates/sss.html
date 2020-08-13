@@ -1,0 +1,54 @@
+{% extends 'homebase.html' %}
+{% load static %}
+{% block title %} SSS - {{ setting.title }}{% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}'>
+    <!--
+    <script>
+        $( function() {
+            $( "#accordion" ).accordion({
+                collapsible: true
+            });
+        } );
+    </script>
+    -->
+{% endblock %}
+{% block sidebar %} {% include 'sidebar.html' %} {% endblock %}
+
+{% block content %}
+    <!-- bradcam_area -->
+    <div class="bradcam_area">
+        <div class="single_bradcam  d-flex align-items-center bradcam_bg_2 overlay">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-xl-9">
+                        <div class="bradcam_text text-center">
+                            <h3>SSS</h3>
+                            <h2 style="color: whitesmoke">Sıkça Sorulan Sorular</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="whole-wrap">
+        <div class="container box_1170">
+            <div class="section-top-border">
+                <center>
+                    <h3 class="mb-30">SIKÇA SORULAN SORULAR</h3>
+                    <div class="col-lg-12">
+                        {% for rs in sss %}
+                            <div id="accordion">
+                                <font style="color: #d01d33">{{ rs.question }}</font> <br>
+                                <blockquote class="generic-blockquote">{{ rs.answer }}<br></blockquote>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </center>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

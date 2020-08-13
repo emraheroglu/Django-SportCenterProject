@@ -5,7 +5,7 @@ from django.contrib.auth import logout, authenticate, login
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 # Create your views here.
-from home.models import Setting, ContactFormMessage, ContactFormu, UserProfile
+from home.models import Setting, ContactFormMessage, ContactFormu, UserProfile, SSS
 from order.models import ShopCart
 from product.models import Category, Product, Images, Comment
 from home.forms import SearchForm, JoinForm
@@ -27,7 +27,6 @@ def index(request):
                }
     return render(request, 'index.html', context)
 
-
 def hakkimizda(request):
     setting = Setting.objects.get(pk=1)
     category = Category.objects.all()
@@ -37,6 +36,13 @@ def hakkimizda(request):
                }
     return render(request, 'hakkimizda.html', context)
 
+def footer(request):
+    setting = Setting.objects.get(pk=1)
+    category = Category.objects.all()
+    context = {'setting': setting,
+               'category': category,
+               }
+    return render(request, 'footer.html', context)
 
 def iletisim(request):
     # formu kaydetmek için bu fonksiyon yazıldı
@@ -63,7 +69,6 @@ def iletisim(request):
                }
     return render(request, 'iletisim.html', context)
 
-
 def referanslar(request):
     setting = Setting.objects.get(pk=1)
     category = Category.objects.all()
@@ -74,14 +79,15 @@ def referanslar(request):
     return render(request, 'referanslar.html', context)
 
 def galeri(request):
+    resimler = Product.objects.all().order_by('?')[:12]
     category = Category.objects.all()
     setting = Setting.objects.get(pk=1)
     context = {'setting': setting,
                'category': category,
+               'resimler':resimler,
                'page': 'galeri'
                }
     return render(request, 'galeri.html', context)
-
 
 def fiyatlar(request):
     category = Category.objects.all()
@@ -93,7 +99,6 @@ def fiyatlar(request):
                'products': products,
                }
     return render(request, 'fiyatlar.html', context)
-
 
 def join(request):
     category = Category.objects.all()
@@ -116,7 +121,6 @@ def products(request,id,slug):
                }
     return render(request,'products.html',context)
 
-
 def product_detail(request, id, slug):
     setting = Setting.objects.get(pk=1)
     category = Category.objects.all()
@@ -131,7 +135,6 @@ def product_detail(request, id, slug):
 
                }
     return render(request, 'product_detail.html', context)
-
 
 def product_search(request):
     setting = Setting.objects.get(pk=1)
@@ -156,7 +159,6 @@ def product_search(request):
                        }
             return render(request, 'products_search.html', context)
     return HttpResponseRedirect('/')
-
 
 def product_search_auto(request):
     if request.is_ajax():
@@ -197,7 +199,6 @@ def login_view(request):
                }
     return render(request, 'login.html', context)
 
-
 def join_view(request):
     setting = Setting.objects.get(pk=1)
     if request.method == 'POST':
@@ -224,3 +225,13 @@ def join_view(request):
                }
 
     return render(request, 'join.html', context)
+
+def sss(request):
+    setting = Setting.objects.get(pk=1)
+    category = Category.objects.all()
+    sss = SSS.objects.all().order_by('ordernumber')
+    context = {'category': category,
+               'sss': sss,
+               'setting': setting,
+               }
+    return render(request, 'sss.html', context)

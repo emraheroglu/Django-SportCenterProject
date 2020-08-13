@@ -15,6 +15,7 @@
 
 {% block content %}
     <!-- bradcam_area -->
+
     <div class="bradcam_area">
         <div class="single_bradcam  d-flex align-items-center bradcam_bg_3 overlay">
             <div class="container">
@@ -34,7 +35,7 @@
     <div class="gallery_area">
         <div class="single_gallery big_img">
             <div class="hover_pop">
-                <a class="popup-image" href="{% static 'img/gallery/1.png' %}">
+                <a class="popup-image" href="{% static 'img/gallery/2.png' %}">
                     <i class="ti-plus"></i>
                 </a>
             </div>
@@ -74,57 +75,32 @@
         </div>
         <div class="single_gallery big_img">
             <div class="hover_pop">
-                <a class="popup-image" href="{% static 'img/gallery/6.png' %}">
+                <a class="popup-image" href="{{ rs.image.url }}">
                     <i class="ti-plus"></i>
                 </a>
             </div>
             <img src="{% static 'img/gallery/6.png' %}" alt="">
         </div>
-
     </div>
+
     <!-- gallery_area_end  -->
     <a href="/" class="view_pore boxed-btn3">ANASAYFA</a>
-    <div class="whole-wrap">
-        <div class="container box_1170">
-            <div class="section-top-border">
-                <h3>Resim Galerisi</h3>
-                <div class="row gallery-item">
-                    <div class="col-md-4">
-                        <a href="{% static 'img/elements/g1.jpg'%}" class="img-pop-up">
-                            <div class="single-gallery-image"><img src="{% static 'img/elements/g1.jpg'%}"></div>
-                        </a>
+    <div class="priscing_area">
+        <div class="container">
+            <div class="row">
+                {% for rs in resimler %}
+                    <div class="col-lg-4 col-md-6">
+                        <font color="#dc143c">< {{ rs.title }} ></font>
+                        &ensp;<font color="#66cdaa">için resme tıklayınız.</font>
+                        <div class="single_prising text-center">
+                            <ul>
+                                <a href="/product/{{ rs.id }}/{{ rs.slug }}"><img style="width:192px; height:192px;" src="{{ rs.image.url }}"></a>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <a href="{% static 'img/elements/g2.jpg'%}" class="img-pop-up">
-                            <div class="single-gallery-image"><img src="{% static 'img/elements/g2.jpg'%}"></div>
-                        </a>
-                    </div>
-                    <div class="col-md-4">
-                        <a href="{% static 'img/elements/g3.jpg'%}" class="img-pop-up">
-                            <div class="single-gallery-image"><img src="{% static 'img/elements/g3.jpg'%}"></div>
-                        </a>
-                    </div>
-                    <div class="col-md-4">
-                        <a href="{% static 'img/elements/g2.jpg'%}" class="img-pop-up">
-                            <div class="single-gallery-image"><img src="{% static 'img/elements/g2.jpg'%}"></div>
-                        </a>
-                    </div>
-                    <div class="col-md-4">
-                        <a href="{% static 'img/elements/g1.jpg'%}" class="img-pop-up">
-                            <div class="single-gallery-image"><img src="{% static 'img/elements/g1.jpg'%}"></div>
-                        </a>
-                    </div>
-                    <div class="col-md-4">
-                        <a href="{% static 'img/elements/g3.jpg'%}" class="img-pop-up">
-                            <div class="single-gallery-image"><img src="{% static 'img/elements/g3.jpg'%}"></div>
-                        </a>
-                    </div>
-
-                </div>
+                {% endfor %}
             </div>
-
-
         </div>
-
     </div>
+
 {% endblock %}

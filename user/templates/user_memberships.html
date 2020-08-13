@@ -1,0 +1,73 @@
+{% extends "homebase.html" %}
+{% load static %}
+{% block title %}Üyelikler - {{ setting.title }}{% endblock %}
+{% block keywords %}{{ setting.keywords }}{% endblock %}
+{% block description %}{{ setting.description }}{% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}'>
+{% endblock %}
+
+{% block sidebar %}
+    {% include "sidebar.html" %}
+{% endblock %}
+
+
+{% block content %}
+    <div class="bradcam_area">
+        <div class="single_bradcam  d-flex align-items-center bradcam_bg_2 overlay">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-xl-9">
+                        <div class="bradcam_text text-center">
+                            <h3>ÜYELİKLER</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="priscing_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="section_title text-center mb-73">
+                        <h3>{{ setting.company}}</h3>
+                        <p>Dünyanın düşleyenlere de ihtiyacı var, yapanlara da. <br> Ama düşlediğini yapanlara daha çok ihtiyacı var.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for rs in orders %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single_prising text-center">
+                            <div class="prising_header">
+                                <h3>{{ rs.product.title }}</h3>
+                                <span>${{ rs.price }}</span>
+                            </div>
+                            <div class="pricing_body">
+                                <ul>
+                                    <img style="width:192px; height:192px;" src="{{ rs.product.image.url }}">
+                                </ul>
+                            </div>
+                            <center>
+                                <table border="2" bgcolor="#5f9ea0">
+                                    <tr>
+                                        <th width="100" height="30"><center>Durum:</center></th>
+                                        <th width="200" height="30"><center>{{ rs.status }}</center></th>
+                                    </tr>
+                                    <tr>
+                                        <th width="100" height="30"><center>Tarih:</center></th>
+                                        <th width="200" height="30"><center>{{ rs.create_at }}</center></th>
+                                    </tr>
+                                </table>
+                            </center><br>
+                            <a href="/user/orderdetail/{{ rs.id }}" class="boxed-btn3">BİLGİ</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

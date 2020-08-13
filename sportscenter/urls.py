@@ -43,6 +43,7 @@ urlpatterns = [
     path('search_auto/', views.product_search_auto, name="product_search_auto"),
     path('logout/', views.logout_view, name='logout_view'),
     path('shopcart/', OrderViews.shopcart, name='shopcart'),
+    path('sss/', views.sss, name='sss'),
 
 ]
 if settings.DEBUG:
