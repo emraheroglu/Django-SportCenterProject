@@ -31,70 +31,32 @@
     </div>
     <!-- bradcam_area end -->
     <div class="whole-wrap">
-        <div class="container box_1170">
-            <div class="section-top-border">
-                <div class="row">
-                    <div class="col-md-9 mt-sm-20">
-                        <p>{{ setting.contact|safe }}</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 mt-sm-20">
+                    <br><p>{{ setting.contact|safe }}</p>
+                </div>
+                <div class="col-lg-3 offset-lg-1">
+                    <div class="span4">
+                        <h2 class="title" style="color: #c0392b">BİZE YAZIN</h2>
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{message.tags}}" role="alert">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <input type="submit" value="SEND FORM">
+                        </form>
+                        <br>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- ================ contact section start ================= -->
-    <section class="contact-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h3 class="contact-title" style="color: #c0392b">&emsp;&emsp;&emsp;&emsp;BİZE YAZIN</h3>
-                </div>
 
-                <div class="col-lg-3 offset-lg-1">
-                    <div class="span4">
-                        <div class="well">
-                            <h3 class="title">İletişim Formu</h3>
-                            {% if messages %}
-                                {% for message in messages %}
-                                    <div class="alert alert-{{message.tags}}" role="alert">
-                                        {{ message }}
-                                    </div>
-                                {% endfor %}
-                            {% endif %}
-                            <form action="" method="post">
-                                {% csrf_token %}
-                                {{ form.as_p }}
-                                <input type="submit" value="SEND FORM">
-                            </form>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="media contact-info">
-                        <span class="contact-info__icon"><i class="ti-home"></i></span>
-                        <div class="media-body">
-
-                            <h3>İdealtepe Mahallesi Namık Kemal Caddesi </h3>
-                            <p>No:96 Maltepe / İstanbul</p>
-                        </div>
-                    </div>
-                    <div class="media contact-info">
-                        <span class="contact-info__icon"><i class="ti-tablet"></i></span>
-                        <div class="media-body">
-                            <h3>0532 755 25 82</h3>
-                            <p>0216 519 80 40</p>
-                        </div>
-                    </div>
-                    <div class="media contact-info">
-                        <span class="contact-info__icon"><i class="ti-email"></i></span>
-                        <div class="media-body">
-                            <h3>info@clubaydinoglu.com</h3>
-                            <p>7/24 Online Hizmet</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-    <!-- ================ contact section end ================= -->
 
 {% endblock %}
