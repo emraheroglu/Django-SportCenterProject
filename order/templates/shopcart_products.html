@@ -35,8 +35,16 @@
         <div class="container box_1170">
             <div class="section-top-border">
                 <h3 class="mb-30">Kayıt İçin Eklenen Ürünler</h3>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{message.tags}}" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
                 <div class="progress-table-wrap">
                     <div class="progress-table">
+
                         <div class="table-head">
                             <div class="visit"><CENTER>SPOR</CENTER></div>
                             <div class="visit"><CENTER>ALINAN SPOR</CENTER></div>
