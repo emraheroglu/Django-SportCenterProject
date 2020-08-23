@@ -36,6 +36,13 @@
                     <div class="blog_left_sidebar">
                         <center>
                             <br><h3 class="title">KULLANICI PROFİLİ</h3>
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-{{message.tags}}" role="alert">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
                             <table border="2" bgcolor="#66cdaa">
                                 <tr>
                                     <th width="250" ><center>Profil Resmi</center></th>
