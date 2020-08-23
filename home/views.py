@@ -140,11 +140,11 @@ def product_search(request):
     setting = Setting.objects.get(pk=1)
     if request.method == 'POST':  # Check form post
         form = SearchForm(request.POST)  # Get form data
-        if form.is_valid():
+        if form.is_valid(): #formda herhangi bir aktivite var mı, geçerli mi(eylem)
             category = Category.objects.all()
 
-            query = form.cleaned_data['query']  # Get form data
-            catid = form.cleaned_data['catid']  # Get form data
+            query = form.cleaned_data['query']  # Get form data  -- verileri kaydet
+            catid = form.cleaned_data['catid']  # Get form data  -- kontrol edilecek veriyi al
 
             if catid == 0:
                 products = Product.objects.filter(
